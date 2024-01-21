@@ -19,7 +19,12 @@ return [
     'events' => [
         [
             'class' => TopMenu::class,
-            'event' => TopMenu::EVENT_BEFORE_RUN,
+            'event' => TopMenu::EVENT_INIT, // To add entries (otherwise, entries are not marked as active)
+            'callback' => [Events::class, 'onTopMenuInit']
+        ],
+        [
+            'class' => TopMenu::class,
+            'event' => TopMenu::EVENT_BEFORE_RUN, // To remove entries (otherwise, entries from other modules might not be removed)
             'callback' => [Events::class, 'onTopMenuBeforeRun']
         ],
         [

@@ -8,6 +8,7 @@
 
 namespace humhub\modules\menuManager;
 
+use humhub\modules\menuManager\assets\MenuManagerAssets;
 use humhub\modules\ui\menu\MenuLink;
 use humhub\widgets\TopMenu;
 use Yii;
@@ -23,7 +24,7 @@ class Events
      * @param Event $event
      * @see TopMenu
      */
-    public static function onTopMenuBeforeRun($event)
+    public static function onTopMenuInit($event)
     {
         /** @var TopMenu $menu */
         $menu = $event->sender;
@@ -43,6 +44,22 @@ class Events
                 'isVisible' => true,
             ]));
         }
+    }
+
+    /**
+     * TopMenu init event callback
+     *
+     * @param Event $event
+     * @see TopMenu
+     */
+    public static function onTopMenuBeforeRun($event)
+    {
+        /** @var TopMenu $menu */
+        $menu = $event->sender;
+
+        /** @var Module $module */
+        $module = Yii::$app->getModule('menu-manager');
+        $configuration = $module->getConfiguration();
 
         if (!$configuration->display('dashboardDisplayState')) {
             $entry = $menu->getEntryById('dashboard');

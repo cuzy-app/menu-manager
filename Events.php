@@ -38,8 +38,8 @@ class Events
                 'label' => Yii::t('yii', 'Home'),
                 'url' => Url::home(),
                 'icon' => 'home',
-                'sortOrder' => 0,
-                'isActive' => Url::home() === Url::current(),
+                'sortOrder' => 50,
+                'isActive' => Url::home() === Url::current() || MenuLink::isActiveState('homepage', 'index', 'index'),
                 'isVisible' => true,
             ]));
         }

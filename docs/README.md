@@ -9,8 +9,7 @@ Manage Humhub menus
 
 ## Pricing
 
-- 45 € including one-year of updates and [support](https://www.cuzy.app/support/)
-- 25 € each year for updates and [support](https://www.cuzy.app/support/)
+- €45 including lifetime of updates and [support](https://www.cuzy.app/support/)
 - Possible discount for non-profit organizations or countries with a very low [median income](https://en.wikipedia.org/wiki/Median_income)
 
 You can:

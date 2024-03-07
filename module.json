@@ -1,20 +1,21 @@
 {
-    "id": "menu-manager",
-    "name": "Menu Manager",
-    "description": "Menu Manager",
-    "keywords": [],
-    "version": "1.0",
-    "humhub": {
-        "minVersion": "1.16"
-    },
-    "homepage": "https://cuzy.app",
-    "authors": [
-        {
-            "name": "Marc FARRE",
-            "homepage": "https://marc.fun",
-            "role": "Developer"
-        }
-    ],
-    "screenshots": [
-    ]
+  "id": "menu-manager",
+  "name": "Menu Manager",
+  "description": "Menu Manager",
+  "keywords": [],
+  "version": "1.0",
+  "humhub": {
+    "minVersion": "1.16"
+  },
+  "homepage": "https://cuzy.app",
+  "authors": [
+    {
+      "name": "Marc FARRE",
+      "homepage": "https://marc.fun",
+      "role": "Developer"
+    }
+  ],
+  "screenshots": [
+    "resources/screen_1.png"
+  ]
 }

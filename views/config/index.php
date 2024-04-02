@@ -33,6 +33,22 @@ $module = Yii::$app->getModule('menu-manager');
     </div>
 
     <div class="panel-body">
+        <div class="alert alert-info">
+            This module was created and is maintained by
+            <a href="https://www.cuzy.app/"
+               target="_blank">CUZY.APP (view other modules)</a>.
+            <br>
+            It's free, but it's the result of a lot of design and maintenance work over time.
+            <br>
+            If it's useful to you, please consider
+            <a href="https://www.cuzy.app/checkout/donate/"
+               target="_blank">making a donation</a>
+            or
+            <a href="https://github.com/cuzy-app/menu-manager"
+               target="_blank">participating in the code</a>.
+            Thanks!
+        </div>
+
         <?php $form = ActiveForm::begin(['acknowledge' => true]); ?>
         <h4><?= Yii::t('MenuManagerModule.config', 'Who should these items be displayed for?') ?></h4>
         <?= $form->field($model, 'homeDisplayState')->dropDownList(Configuration::getDisplayStateLabels()) ?>

@@ -25,31 +25,34 @@ $MenuEntryConfigAttributeLabels = (new MenuEntryConfig())->attributeLabels();
 $MenuEntryConfigAttributeHints = (new MenuEntryConfig())->attributeHints();
 ?>
 
-<h4><?= $configurationAttributeLabels[$attribute] ?></h4>
+<?php if ($configurationAttributeLabels[$attribute] ?? null) : ?>
 
-<div class="row">
-    <div class="col-md-3">
-        <?= $form->field($model, $attribute . '[displayState]')
-            ->dropDownList(MenuEntryConfig::getDisplayStateLabels())
-            ->label($MenuEntryConfigAttributeLabels['displayState'] ?? '')
-            ->hint($MenuEntryConfigAttributeHints['displayState'] ?? '') ?>
+    <h4><?= $configurationAttributeLabels[$attribute] ?></h4>
+
+    <div class="row">
+        <div class="col-md-3">
+            <?= $form->field($model, $attribute . '[displayState]')
+                ->dropDownList(MenuEntryConfig::getDisplayStateLabels())
+                ->label($MenuEntryConfigAttributeLabels['displayState'] ?? '')
+                ->hint($MenuEntryConfigAttributeHints['displayState'] ?? '') ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, $attribute . '[icon]')
+                ->widget(IconPicker::class)
+                ->label($MenuEntryConfigAttributeLabels['icon'] ?? '')
+                ->hint($MenuEntryConfigAttributeHints['icon'] ?? '') ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, $attribute . '[label]')
+                ->textInput()
+                ->label($MenuEntryConfigAttributeLabels['label'] ?? '')
+                ->hint($MenuEntryConfigAttributeHints['label'] ?? '') ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, $attribute . '[sortOrder]')
+                ->textInput(['type' => 'number', 'step' => 1, 'min' => 1, 'max' => 10000])
+                ->label($MenuEntryConfigAttributeLabels['sortOrder'] ?? '')
+                ->hint($MenuEntryConfigAttributeHints['sortOrder'] ?? '') ?>
+        </div>
     </div>
-    <div class="col-md-3">
-        <?= $form->field($model, $attribute . '[icon]')
-            ->widget(IconPicker::class)
-            ->label($MenuEntryConfigAttributeLabels['icon'] ?? '')
-            ->hint($MenuEntryConfigAttributeHints['icon'] ?? '') ?>
-    </div>
-    <div class="col-md-3">
-        <?= $form->field($model, $attribute . '[label]')
-            ->textInput()
-            ->label($MenuEntryConfigAttributeLabels['label'] ?? '')
-            ->hint($MenuEntryConfigAttributeHints['label'] ?? '') ?>
-    </div>
-    <div class="col-md-3">
-        <?= $form->field($model, $attribute . '[sortOrder]')
-            ->textInput(['type' => 'number', 'step' => 1, 'min' => 1, 'max' => 10000])
-            ->label($MenuEntryConfigAttributeLabels['sortOrder'] ?? '')
-            ->hint($MenuEntryConfigAttributeHints['sortOrder'] ?? '') ?>
-    </div>
-</div>
+<?php endif; ?>

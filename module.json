@@ -1,7 +1,7 @@
 {
   "id": "menu-manager",
   "name": "Menu Manager",
-  "description": "Select top menu items to show or hide.",
+  "description": "Change top menu items.",
   "keywords": [],
   "version": "1.0",
   "humhub": {

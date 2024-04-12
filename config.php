@@ -9,7 +9,6 @@
 /** @noinspection MissedFieldInspection */
 
 use humhub\modules\menuManager\Events;
-use humhub\modules\stream\widgets\WallStreamFilterNavigation;
 use humhub\widgets\TopMenu;
 
 return [
@@ -26,11 +25,6 @@ return [
             'class' => TopMenu::class,
             'event' => TopMenu::EVENT_BEFORE_RUN, // To remove entries (otherwise, entries from other modules might not be removed)
             'callback' => [Events::class, 'onTopMenuBeforeRun']
-        ],
-        [
-            'class' => WallStreamFilterNavigation::class,
-            'event' => WallStreamFilterNavigation::EVENT_BEFORE_RUN,
-            'callback' => [Events::class, 'onWallStreamFilterNavigationBeforeRun']
         ],
     ]
 ];

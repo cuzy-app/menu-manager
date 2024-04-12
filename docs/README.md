@@ -1,11 +1,23 @@
 # Menu Manager
 
-Select top menu items to show or hide.
+**Change top menu items.**
 
 ## Overview
 
-- In the top menu, it is possible to show/hide the following items to all, logged in users, admins only or none: "Home", "Dashboard", "People", "Spaces", "Calendar", "Members Map" and "Events Map".
-- Ability to hide the "Filter" form at the top of the stream
+Top menu items that can be managed:
+- Home
+- Dashboard
+- People
+- Spaces
+- Calendar
+- Members Map
+- Events Map
+
+Item settings:
+- Show/hide to: All, Logged-in users, Admins only or None
+- Label
+- Icon
+- Sort order
 
 ## Pricing
 

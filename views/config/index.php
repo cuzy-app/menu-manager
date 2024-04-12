@@ -50,21 +50,61 @@ $module = Yii::$app->getModule('menu-manager');
         </div>
 
         <?php $form = ActiveForm::begin(['acknowledge' => true]); ?>
-        <h4><?= Yii::t('MenuManagerModule.config', 'Who should these items be displayed for?') ?></h4>
-        <?= $form->field($model, 'homeDisplayState')->dropDownList(Configuration::getDisplayStateLabels()) ?>
-        <?= $form->field($model, 'dashboardDisplayState')->dropDownList(Configuration::getDisplayStateLabels()) ?>
-        <?= $form->field($model, 'spacesDisplayState')->dropDownList(Configuration::getDisplayStateLabels()) ?>
-        <?= $form->field($model, 'peopleDisplayState')->dropDownList(Configuration::getDisplayStateLabels()) ?>
+
+        <?= $this->render('_menu-entry-fields', [
+            'form' => $form,
+            'model' => $model,
+            'attribute' => 'home',
+        ]) ?>
+
+        <?= $this->render('_menu-entry-fields', [
+            'form' => $form,
+            'model' => $model,
+            'attribute' => 'dashboard',
+        ]) ?>
+
+        <?= $this->render('_menu-entry-fields', [
+            'form' => $form,
+            'model' => $model,
+            'attribute' => 'spaces',
+        ]) ?>
+
+        <?= $this->render('_menu-entry-fields', [
+            'form' => $form,
+            'model' => $model,
+            'attribute' => 'people',
+        ]) ?>
+
         <?php if (Yii::$app->getModule('calendar')): ?>
-            <?= $form->field($model, 'calendarDisplayState')->dropDownList(Configuration::getDisplayStateLabels()) ?>
+
+            <?= $this->render('_menu-entry-fields', [
+                'form' => $form,
+                'model' => $model,
+                'attribute' => 'calendar',
+            ]) ?>
         <?php endif; ?>
+
         <?php if (Yii::$app->getModule('members-map')): ?>
-            <?= $form->field($model, 'membersMapDisplayState')->dropDownList(Configuration::getDisplayStateLabels()) ?>
+            <?= $this->render('_menu-entry-fields', [
+                'form' => $form,
+                'model' => $model,
+                'attribute' => 'membersMap',
+            ]) ?>
         <?php endif; ?>
+
         <?php if (Yii::$app->getModule('events-map')): ?>
-            <?= $form->field($model, 'eventsMapDisplayState')->dropDownList(Configuration::getDisplayStateLabels()) ?>
+            <?= $this->render('_menu-entry-fields', [
+                'form' => $form,
+                'model' => $model,
+                'attribute' => 'eventsMap',
+            ]) ?>
         <?php endif; ?>
-        <?= $form->field($model, 'streamFilterDisplayState')->dropDownList(Configuration::getDisplayStateLabels()) ?>
+
+        <?= Button::danger(Yii::t('MenuManagerModule.config', 'Reset all settings'))
+            ->link(['reset'])
+            ->confirm()
+            ->right() ?>
+
         <?= Button::save()->submit() ?>
         <?php ActiveForm::end(); ?>
     </div>

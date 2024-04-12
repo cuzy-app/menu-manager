@@ -52,6 +52,6 @@ class Module extends \humhub\components\Module
 
     public function getDescription()
     {
-        return Yii::t('MenuManagerModule.config', 'Select top menu items to show or hide.');
+        return Yii::t('MenuManagerModule.config', 'Change top menu items.');
     }
 }

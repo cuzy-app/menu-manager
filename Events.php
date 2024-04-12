@@ -8,12 +8,11 @@
 
 namespace humhub\modules\menuManager;
 
-use humhub\modules\menuManager\assets\MenuManagerAssets;
+use Exception;
 use humhub\modules\ui\menu\MenuLink;
 use humhub\widgets\TopMenu;
 use Yii;
 use yii\base\Event;
-use yii\base\WidgetEvent;
 use yii\helpers\Url;
 
 class Events
@@ -33,13 +32,14 @@ class Events
         $module = Yii::$app->getModule('menu-manager');
         $configuration = $module->getConfiguration();
 
-        if ($configuration->display('homeDisplayState')) {
+        $homeMenuEntryConfig = $configuration->getMenuEntryConfig('home');
+        if ($homeMenuEntryConfig->display()) {
             $menu->addEntry(new MenuLink([
-                'id' => 'home',
-                'label' => Yii::t('yii', 'Home'),
+                'id' => $homeMenuEntryConfig->id,
+                'label' => $homeMenuEntryConfig->label ?: Yii::t('yii', 'Home'),
                 'url' => Url::home(),
-                'icon' => 'home',
-                'sortOrder' => 50,
+                'icon' => $homeMenuEntryConfig->icon ?: 'home',
+                'sortOrder' => $homeMenuEntryConfig->sortOrder ?: 50,
                 'isActive' => Url::home() === Url::current() || MenuLink::isActiveState('homepage', 'index', 'index'),
                 'isVisible' => true,
             ]));
@@ -61,57 +61,40 @@ class Events
         $module = Yii::$app->getModule('menu-manager');
         $configuration = $module->getConfiguration();
 
-        if (!$configuration->display('dashboardDisplayState')) {
-            $entry = $menu->getEntryById('dashboard');
-            if ($entry) {
-                $menu->removeEntry($entry);
+        $attributes = [
+            'dashboard',
+            'people',
+            'spaces',
+            'calendar',
+            'membersMap',
+            'eventsMap',
+        ];
+
+        foreach ($attributes as $attribute) {
+            $menuEntryConfig = $configuration->getMenuEntryConfig($attribute);
+            /** @var MenuLink $entry */
+            $entry = ($attribute === 'calendar') ?
+                $menu->getEntryByUrl(\humhub\modules\calendar\helpers\Url::toGlobalCalendar()) :
+                $menu->getEntryById($menuEntryConfig->id);
+            if (!$entry) {
+                continue;
             }
-        }
-
-        if (!$configuration->display('peopleDisplayState')) {
-            $entry = $menu->getEntryById('people');
-            if ($entry) {
+            if (!$menuEntryConfig->display()) {
                 $menu->removeEntry($entry);
+            } else {
+                if ($menuEntryConfig->icon) {
+                    try {
+                        $entry->setIcon($menuEntryConfig->icon);
+                    } catch (Exception $e) {
+                    }
+                }
+                if ($menuEntryConfig->label) {
+                    $entry->setLabel($menuEntryConfig->label);
+                }
+                if ($menuEntryConfig->sortOrder) {
+                    $entry->setSortOrder($menuEntryConfig->sortOrder);
+                }
             }
-        }
-
-        if (!$configuration->display('spacesDisplayState')) {
-            $entry = $menu->getEntryById('spaces');
-            if ($entry) {
-                $menu->removeEntry($entry);
-            }
-        }
-
-        if (!$configuration->display('calendarDisplayState')) {
-            $entry = $menu->getEntryByUrl(\humhub\modules\calendar\helpers\Url::toGlobalCalendar());
-            if ($entry) {
-                $menu->removeEntry($entry);
-            }
-        }
-
-        if (!$configuration->display('membersMapDisplayState')) {
-            $entry = $menu->getEntryById('members-map');
-            if ($entry) {
-                $menu->removeEntry($entry);
-            }
-        }
-
-        if (!$configuration->display('eventsMapDisplayState')) {
-            $entry = $menu->getEntryById('events-map');
-            if ($entry) {
-                $menu->removeEntry($entry);
-            }
-        }
-    }
-
-    public static function onWallStreamFilterNavigationBeforeRun(WidgetEvent $event)
-    {
-        /** @var Module $module */
-        $module = Yii::$app->getModule('menu-manager');
-        $configuration = $module->getConfiguration();
-
-        if (!$configuration->display('streamFilterDisplayState')) {
-            $event->isValid = false;
         }
     }
 }

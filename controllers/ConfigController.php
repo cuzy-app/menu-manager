@@ -14,9 +14,6 @@ use Yii;
 
 class ConfigController extends Controller
 {
-    /**
-     * @return string
-     */
     public function actionIndex()
     {
         /** @var Module $module */
@@ -30,5 +27,18 @@ class ConfigController extends Controller
         return $this->render('index', [
             'model' => $model
         ]);
+    }
+
+    public function actionReset()
+    {
+        /** @var Module $module */
+        $module = $this->module;
+        $model = $module->getConfiguration();
+
+        if ($model->reset()) {
+            $this->view->saved();
+        }
+
+        return $this->htmlRedirect(['index']); // Not $this->>redirect() because the top menu must refresh (no ajax)
     }
 }

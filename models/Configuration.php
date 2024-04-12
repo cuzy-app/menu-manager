@@ -8,26 +8,57 @@
 
 namespace humhub\modules\menuManager\models;
 
+use humhub\components\Module;
 use humhub\components\SettingsManager;
+use humhub\widgets\TopMenu;
 use Yii;
 use yii\base\Model;
-use yii\helpers\Inflector;
 
+/**
+ *
+ * @property-read array $availableTopMenuAttributes
+ */
 class Configuration extends Model
 {
+    /**
+     * Attribute names to menu link IDs
+     */
+    public const ATTRIBUTE_MENU_LINK_ID = [
+        'topMenuHome' => 'home',
+        'topMenuDashboard' => 'dashboard',
+        'topMenuPeople' => 'people',
+        'topMenuSpaces' => 'spaces',
+        'topMenuClassifiedSpaceBrowser' => 'classified-space-browser',
+        'topMenuCalendar' => 'calendar', // TODO: add an ID to the calendar module top menu entry
+        'topMenuMembersMap' => 'members-map',
+        'topMenuEventsMap' => 'events-map',
+        'topMenuEcommerce' => 'ecommerce',
+        'topMenuSurvey' => 'surveys-global',
+    ];
+    /**
+     * Attributes for menu entries from external modules
+     */
+    public const ATTRIBUTE_MODULE_IDS = [
+        'topMenuClassifiedSpaceBrowser' => 'classified-space',
+        'topMenuCalendar' => 'calendar',
+        'topMenuMembersMap' => 'members-map',
+        'topMenuEventsMap' => 'events-map',
+        'topMenuEcommerce' => 'ecommerce',
+        'topMenuSurvey' => 'survey',
+    ];
+
     public SettingsManager $settingsManager;
 
-    /**
-     * Attribute names must be the MenuLink ID camel cased
-     */
-    public ?array $home = null;
-    public ?array $dashboard = null;
-    public ?array $people = null;
-    public ?array $spaces = null;
-    public ?array $calendar = null;
-    public ?array $membersMap = null;
-    public ?array $eventsMap = null;
-
+    public array $topMenuHome = [];
+    public array $topMenuDashboard = [];
+    public array $topMenuPeople = [];
+    public array $topMenuSpaces = [];
+    public array $topMenuClassifiedSpaceBrowser = [];
+    public array $topMenuCalendar = [];
+    public array $topMenuMembersMap = [];
+    public array $topMenuEventsMap = [];
+    public array $topMenuEcommerce = [];
+    public array $topMenuSurvey = [];
 
     /**
      * @inheritdoc
@@ -35,7 +66,7 @@ class Configuration extends Model
     public function rules()
     {
         return [
-            [['home', 'dashboard', 'people', 'spaces', 'calendar', 'membersMap', 'eventsMap'], 'safe'],
+            [$this->availableTopMenuAttributes, 'safe'],
         ];
     }
 
@@ -44,54 +75,57 @@ class Configuration extends Model
      */
     public function attributeLabels()
     {
-        return [
-            'home' => Yii::t('MenuManagerModule.config', 'Top menu entry "{entryLabel}"', ['entryLabel' => Yii::t('yii', 'Home')]),
-            'dashboard' => Yii::t('MenuManagerModule.config', 'Top menu entry "{entryLabel}"', ['entryLabel' => Yii::t('DashboardModule.base', 'Dashboard')]),
-            'spaces' => Yii::t('MenuManagerModule.config', 'Top menu entry "{entryLabel}"', ['entryLabel' => Yii::t('SpaceModule.base', 'Spaces')]),
-            'people' => Yii::t('MenuManagerModule.config', 'Top menu entry "{entryLabel}"', ['entryLabel' => Yii::t('UserModule.base', 'People')]),
-            'calendar' => Yii::t('MenuManagerModule.config', 'Top menu entry "{entryLabel}"', ['entryLabel' => Yii::$app->getModule('calendar') ? Yii::t('CalendarModule.base', 'Calendar') : 'Calendar']),
-            'membersMap' => Yii::t('MenuManagerModule.config', 'Top menu entry "{entryLabel}"', ['entryLabel' => Yii::$app->getModule('members-map') ? Yii::t('MembersMapModule.base', 'Members map') : 'Members Map']),
-            'eventsMap' => Yii::t('MenuManagerModule.config', 'Top menu entry "{entryLabel}"', ['entryLabel' => Yii::$app->getModule('events-map') ? Yii::t('EventsMapModule.config', 'Events Map') : 'Events Map']),
-        ];
-    }
-
-    public function attributeHints()
-    {
-        return [
-            'calendar' => Yii::t('MenuManagerModule.config', 'To be displayed, it must also be enabled in the configuration'),
-            'membersMap' => Yii::t('MenuManagerModule.config', 'To be displayed, it must also be enabled in the configuration'),
-            'eventsMap' => Yii::t('MenuManagerModule.config', 'To be displayed, it must also be enabled in the configuration'),
-        ];
-    }
-
-    public function loadBySettings(): void
-    {
-        $this->home = (array)$this->settingsManager->getSerialized('home', $this->home);
-        $this->dashboard = (array)$this->settingsManager->getSerialized('dashboard', $this->dashboard);
-        $this->spaces = (array)$this->settingsManager->getSerialized('spaces', $this->spaces);
-        $this->people = (array)$this->settingsManager->getSerialized('people', $this->people);
-        $this->calendar = (array)$this->settingsManager->getSerialized('calendar', $this->calendar);
-        $this->membersMap = (array)$this->settingsManager->getSerialized('membersMap', $this->membersMap);
-        $this->eventsMap = (array)$this->settingsManager->getSerialized('eventsMap', $this->eventsMap);
+        $attributeLabels = [];
+        $topMenu = new TopMenu();
+        foreach ($this->availableTopMenuAttributes as $attribute) {
+            $menuEntryConfig = $this->getMenuEntryConfig($attribute);
+            $entry = ($attribute === 'topMenuCalendar') ? // TODO: add an ID to the calendar module top menu entry
+                $topMenu->getEntryByUrl(\humhub\modules\calendar\helpers\Url::toGlobalCalendar()) :
+                $topMenu->getEntryById($menuEntryConfig->id);
+            if ($entry) {
+                $attributeLabel = $entry->getLabel();
+                $moduleId = static::ATTRIBUTE_MODULE_IDS[$attribute] ?? null;
+                if ($moduleId) {
+                    /** @var Module $module */
+                    $module = Yii::$app->getModule($moduleId);
+                    $attributeLabel .= ' (' . Yii::t('MenuManagerModule.config', '{ClassifiedSpace} module', ['ClassifiedSpace' => $module->getName()]) . ')';
+                }
+                $attributeLabels[$attribute] = $attributeLabel;
+            }
+        }
+        return $attributeLabels;
     }
 
     public function getMenuEntryConfig($attribute): MenuEntryConfig
     {
         return new MenuEntryConfig(array_merge(
-            ['id' => Inflector::camel2id($attribute, '-')],
+            ['id' => static::ATTRIBUTE_MENU_LINK_ID[$attribute]],
             $this->$attribute ?? []
         ));
     }
 
+    public function attributeHints()
+    {
+        return [
+            'topMenuClassifiedSpaceBrowser' => Yii::t('MenuManagerModule.config', 'To be displayed, it must also be enabled in the configuration'),
+            'topMenuCalendar' => Yii::t('MenuManagerModule.config', 'To be displayed, it must also be enabled in the configuration'),
+            'topMenuMembersMap' => Yii::t('MenuManagerModule.config', 'To be displayed, it must also be enabled in the configuration'),
+            'topMenuEventsMap' => Yii::t('MenuManagerModule.config', 'To be displayed, it must also be enabled in the configuration'),
+        ];
+    }
+
+    public function loadBySettings(): void
+    {
+        foreach ($this->availableTopMenuAttributes as $attribute) {
+            $this->$attribute = (array)$this->settingsManager->getSerialized($attribute, $this->$attribute);
+        }
+    }
+
     public function reset(): bool
     {
-        $this->home = [];
-        $this->dashboard = [];
-        $this->spaces = [];
-        $this->people = [];
-        $this->calendar = [];
-        $this->membersMap = [];
-        $this->eventsMap = [];
+        foreach ($this->availableTopMenuAttributes as $attribute) {
+            $this->$attribute = [];
+        }
         return $this->save();
     }
 
@@ -101,14 +135,22 @@ class Configuration extends Model
             return false;
         }
 
-        $this->settingsManager->setSerialized('home', $this->home);
-        $this->settingsManager->setSerialized('dashboard', $this->dashboard);
-        $this->settingsManager->setSerialized('spaces', $this->spaces);
-        $this->settingsManager->setSerialized('people', $this->people);
-        $this->settingsManager->setSerialized('calendar', $this->calendar);
-        $this->settingsManager->setSerialized('membersMap', $this->membersMap);
-        $this->settingsManager->setSerialized('eventsMap', $this->eventsMap);
+        foreach ($this->availableTopMenuAttributes as $attribute) {
+            $this->settingsManager->setSerialized($attribute, $this->$attribute);
+        }
 
         return true;
+    }
+
+    public function getAvailableTopMenuAttributes(): array
+    {
+        $availableTopMenuAttributes = [];
+        foreach (self::ATTRIBUTE_MENU_LINK_ID as $attribute => $menuLinkId) {
+            $moduleId = static::ATTRIBUTE_MODULE_IDS[$attribute] ?? null;
+            if (!$moduleId || Yii::$app->getModule($moduleId)) {
+                $availableTopMenuAttributes[] = $attribute;
+            }
+        }
+        return $availableTopMenuAttributes;
     }
 }

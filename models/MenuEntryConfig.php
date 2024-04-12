@@ -57,7 +57,7 @@ class MenuEntryConfig extends Model
         return [
             'displayState' => Yii::t('MenuManagerModule.config', 'Who should these items be displayed for?'),
             'icon' => Yii::t('MenuManagerModule.config', 'Icon'),
-            'label' => Yii::t('MenuManagerModule.config', 'Label'),
+            'label' => Yii::t('MenuManagerModule.config', 'Name'),
             'sortOrder' => Yii::t('MenuManagerModule.config', 'Sort order'),
         ];
     }
@@ -70,7 +70,7 @@ class MenuEntryConfig extends Model
         return [
             'icon' => Yii::t('MenuManagerModule.config', 'Default if empty.'),
             'label' => Yii::t('MenuManagerModule.config', 'Default if empty.'),
-            'sortOrder' => Yii::t('MenuManagerModule.config', 'Values between 0 and 10000.') . '<br>' . Yii::t('MenuManagerModule.config', 'Default if empty.'),
+            'sortOrder' => Yii::t('MenuManagerModule.config', 'Values between 1 and 10000.') . '<br>' . Yii::t('MenuManagerModule.config', 'Default if empty.'),
         ];
     }
 

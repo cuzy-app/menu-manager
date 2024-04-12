@@ -51,58 +51,19 @@ $module = Yii::$app->getModule('menu-manager');
 
         <?php $form = ActiveForm::begin(['acknowledge' => true]); ?>
 
-        <?= $this->render('_menu-entry-fields', [
-            'form' => $form,
-            'model' => $model,
-            'attribute' => 'home',
-        ]) ?>
-
-        <?= $this->render('_menu-entry-fields', [
-            'form' => $form,
-            'model' => $model,
-            'attribute' => 'dashboard',
-        ]) ?>
-
-        <?= $this->render('_menu-entry-fields', [
-            'form' => $form,
-            'model' => $model,
-            'attribute' => 'spaces',
-        ]) ?>
-
-        <?= $this->render('_menu-entry-fields', [
-            'form' => $form,
-            'model' => $model,
-            'attribute' => 'people',
-        ]) ?>
-
-        <?php if (Yii::$app->getModule('calendar')): ?>
-
+        <?php foreach ($model->availableTopMenuAttributes as $attribute): ?>
             <?= $this->render('_menu-entry-fields', [
                 'form' => $form,
                 'model' => $model,
-                'attribute' => 'calendar',
+                'attribute' => $attribute,
             ]) ?>
-        <?php endif; ?>
+        <?php endforeach; ?>
 
-        <?php if (Yii::$app->getModule('members-map')): ?>
-            <?= $this->render('_menu-entry-fields', [
-                'form' => $form,
-                'model' => $model,
-                'attribute' => 'membersMap',
-            ]) ?>
-        <?php endif; ?>
-
-        <?php if (Yii::$app->getModule('events-map')): ?>
-            <?= $this->render('_menu-entry-fields', [
-                'form' => $form,
-                'model' => $model,
-                'attribute' => 'eventsMap',
-            ]) ?>
-        <?php endif; ?>
-
+        <br>
         <?= Button::danger(Yii::t('MenuManagerModule.config', 'Reset all settings'))
             ->link(['reset'])
             ->confirm()
+            ->sm()
             ->right() ?>
 
         <?= Button::save()->submit() ?>

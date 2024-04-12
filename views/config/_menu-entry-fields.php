@@ -48,7 +48,7 @@ $MenuEntryConfigAttributeHints = (new MenuEntryConfig())->attributeHints();
     </div>
     <div class="col-md-3">
         <?= $form->field($model, $attribute . '[sortOrder]')
-            ->textInput(['type' => 'number', 'min' => 0])
+            ->textInput(['type' => 'number', 'step' => 1, 'min' => 1, 'max' => 10000])
             ->label($MenuEntryConfigAttributeLabels['sortOrder'] ?? '')
             ->hint($MenuEntryConfigAttributeHints['sortOrder'] ?? '') ?>
     </div>

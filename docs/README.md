@@ -9,9 +9,12 @@ Top menu items that can be managed:
 - Dashboard
 - People
 - Spaces
+- Classified Space browser
 - Calendar
 - Members Map
 - Events Map
+- eCommerce Store
+- Surveys
 
 Item settings:
 - Show/hide to: All, Logged-in users, Admins only or None

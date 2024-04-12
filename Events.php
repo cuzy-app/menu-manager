@@ -32,7 +32,7 @@ class Events
         $module = Yii::$app->getModule('menu-manager');
         $configuration = $module->getConfiguration();
 
-        $homeMenuEntryConfig = $configuration->getMenuEntryConfig('home');
+        $homeMenuEntryConfig = $configuration->getMenuEntryConfig('topMenuHome');
         if ($homeMenuEntryConfig->display()) {
             $menu->addEntry(new MenuLink([
                 'id' => $homeMenuEntryConfig->id,
@@ -61,24 +61,20 @@ class Events
         $module = Yii::$app->getModule('menu-manager');
         $configuration = $module->getConfiguration();
 
-        $attributes = [
-            'dashboard',
-            'people',
-            'spaces',
-            'calendar',
-            'membersMap',
-            'eventsMap',
-        ];
+        foreach ($configuration->availableTopMenuAttributes as $attribute) {
+            if ($attribute === 'topMenuHome') {
+                continue; // See onTopMenuInit()
+            }
 
-        foreach ($attributes as $attribute) {
             $menuEntryConfig = $configuration->getMenuEntryConfig($attribute);
             /** @var MenuLink $entry */
-            $entry = ($attribute === 'calendar') ?
+            $entry = ($attribute === 'topMenuCalendar') ? // TODO: add an ID to the calendar module top menu entry
                 $menu->getEntryByUrl(\humhub\modules\calendar\helpers\Url::toGlobalCalendar()) :
                 $menu->getEntryById($menuEntryConfig->id);
             if (!$entry) {
                 continue;
             }
+
             if (!$menuEntryConfig->display()) {
                 $menu->removeEntry($entry);
             } else {
@@ -91,7 +87,8 @@ class Events
                 if ($menuEntryConfig->label) {
                     $entry->setLabel(Yii::t('MenuManagerModule.custom', $menuEntryConfig->label));
                 }
-                if ($menuEntryConfig->sortOrder) {
+                $sortOrder = (int)$menuEntryConfig->sortOrder;
+                if ($sortOrder && $sortOrder >= 1 && $sortOrder <= 10000) {
                     $entry->setSortOrder($menuEntryConfig->sortOrder);
                 }
             }

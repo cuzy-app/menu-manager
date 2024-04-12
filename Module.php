@@ -44,14 +44,13 @@ class Module extends \humhub\components\Module
         return Url::to(['/menu-manager/config']);
     }
 
-
     public function getName()
     {
-        return Yii::t('MenuManagerModule.config', 'Menu Manager');
+        return Yii::t('MenuManagerModule.base', 'Menu Manager');
     }
 
     public function getDescription()
     {
-        return Yii::t('MenuManagerModule.config', 'Change top menu items.');
+        return Yii::t('MenuManagerModule.base', 'Change top menu items.');
     }
 }

@@ -66,20 +66,20 @@ class Configuration extends Model
 
     public function loadBySettings(): void
     {
-        $this->home = $this->settingsManager->getSerialized('home', $this->home);
-        $this->dashboard = $this->settingsManager->getSerialized('dashboard', $this->dashboard);
-        $this->spaces = $this->settingsManager->getSerialized('spaces', $this->spaces);
-        $this->people = $this->settingsManager->getSerialized('people', $this->people);
-        $this->calendar = $this->settingsManager->getSerialized('calendar', $this->calendar);
-        $this->membersMap = $this->settingsManager->getSerialized('membersMap', $this->membersMap);
-        $this->eventsMap = $this->settingsManager->getSerialized('eventsMap', $this->eventsMap);
+        $this->home = (array)$this->settingsManager->getSerialized('home', $this->home);
+        $this->dashboard = (array)$this->settingsManager->getSerialized('dashboard', $this->dashboard);
+        $this->spaces = (array)$this->settingsManager->getSerialized('spaces', $this->spaces);
+        $this->people = (array)$this->settingsManager->getSerialized('people', $this->people);
+        $this->calendar = (array)$this->settingsManager->getSerialized('calendar', $this->calendar);
+        $this->membersMap = (array)$this->settingsManager->getSerialized('membersMap', $this->membersMap);
+        $this->eventsMap = (array)$this->settingsManager->getSerialized('eventsMap', $this->eventsMap);
     }
 
     public function getMenuEntryConfig($attribute): MenuEntryConfig
     {
         return new MenuEntryConfig(array_merge(
             ['id' => Inflector::camel2id($attribute, '-')],
-            $this->$attribute
+            $this->$attribute ?? []
         ));
     }
 

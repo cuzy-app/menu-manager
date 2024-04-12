@@ -36,7 +36,7 @@ class Events
         if ($homeMenuEntryConfig->display()) {
             $menu->addEntry(new MenuLink([
                 'id' => $homeMenuEntryConfig->id,
-                'label' => $homeMenuEntryConfig->label ?: Yii::t('yii', 'Home'),
+                'label' => Yii::t('MenuManagerModule.custom', $homeMenuEntryConfig->label) ?: Yii::t('yii', 'Home'),
                 'url' => Url::home(),
                 'icon' => $homeMenuEntryConfig->icon ?: 'home',
                 'sortOrder' => $homeMenuEntryConfig->sortOrder ?: 50,
@@ -89,7 +89,7 @@ class Events
                     }
                 }
                 if ($menuEntryConfig->label) {
-                    $entry->setLabel($menuEntryConfig->label);
+                    $entry->setLabel(Yii::t('MenuManagerModule.custom', $menuEntryConfig->label));
                 }
                 if ($menuEntryConfig->sortOrder) {
                     $entry->setSortOrder($menuEntryConfig->sortOrder);

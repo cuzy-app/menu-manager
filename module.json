@@ -1,8 +1,12 @@
 {
   "id": "menu-manager",
   "name": "Menu Manager",
-  "description": "Change top menu items.",
-  "keywords": [],
+  "description": "Change top menu items and add a \"Home\" item.",
+  "keywords": [
+    "menu",
+    "ui",
+    "theme"
+  ],
   "version": "1.0",
   "humhub": {
     "minVersion": "1.16"

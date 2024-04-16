@@ -1,5 +1,5 @@
 <?php
 return array (
-  'Change top menu items.' => 'שנה את פריטי התפריט העליון.',
+  'Change top menu items and add a "Home" item.' => 'שנה פריטים בתפריט העליון והוסף פריט "בית".',
   'Menu Manager' => 'מנהל תפריט',
 );

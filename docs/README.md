@@ -1,11 +1,10 @@
 # Menu Manager
 
-**Change top menu items.**
+**Change top menu items and add a "Home" item.**
 
 ## Overview
 
 Top menu items that can be managed:
-- Home
 - Dashboard
 - People
 - Spaces
@@ -15,6 +14,14 @@ Top menu items that can be managed:
 - Events Map
 - eCommerce Store
 - Surveys
+
+A "Home" item can be added to the menu.
+The homepage can be managed with [the Homepage module](https://marketplace.humhub.com/module/homepage), or by editing the configuration file `protected/config/web.php`, e.g.:
+```php
+return [
+   'homeUrl' => '/s/some-space/',
+];
+```
 
 Item settings:
 - Show/hide to: All, Logged-in users, Admins only or None
@@ -28,7 +35,14 @@ This module is free, but is the result of a lot of work for the design and maint
 
 If it's useful to you, please consider [making a donation](https://www.cuzy.app/checkout/donate/) or [participating in the code](https://github.com/cuzy-app/humhub-modules-auth-keycloak). Thanks!
 
-## Support, questions & feature requests
+## Repository
 
-- [Support request form](https://www.cuzy.app/support/)
-- [Community space for questions and feature requests](https://community.humhub.com/s/cuzyapp/home)
+https://github.com/cuzy-app/menu-manager
+
+## Publisher
+
+[CUZY.APP](https://www.cuzy.app/)
+
+## Licence
+
+[GNU AGPL](https://github.com/cuzy-app/clean-theme/blob/master/docs/LICENCE.md)

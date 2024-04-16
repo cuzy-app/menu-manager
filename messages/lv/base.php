@@ -1,5 +1,5 @@
 <?php
 return array (
-  'Change top menu items.' => 'Mainiet augšējos izvēlnes vienumus.',
+  'Change top menu items and add a "Home" item.' => 'Mainiet augšējos izvēlnes vienumus un pievienojiet vienumu "Sākums".',
   'Menu Manager' => 'Izvēlņu pārvaldnieks',
 );

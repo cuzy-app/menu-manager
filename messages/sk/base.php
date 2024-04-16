@@ -1,5 +1,5 @@
 <?php
 return array (
-  'Change top menu items.' => 'Zmeňte položky horného menu.',
+  'Change top menu items and add a "Home" item.' => 'Zmeňte položky horného menu a pridajte položku „Domov“.',
   'Menu Manager' => 'Správca menu',
 );

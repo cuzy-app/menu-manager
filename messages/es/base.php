@@ -1,5 +1,5 @@
 <?php
 return array (
-  'Change top menu items.' => 'Cambiar elementos del menú superior.',
+  'Change top menu items and add a "Home" item.' => 'Cambie los elementos del menú superior y agregue un elemento "Inicio".',
   'Menu Manager' => 'Administrador de menú',
 );

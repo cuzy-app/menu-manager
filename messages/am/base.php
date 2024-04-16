@@ -1,5 +1,5 @@
 <?php
 return array (
-  'Change top menu items.' => 'ከፍተኛ የምናሌ ንጥሎችን ይቀይሩ።',
+  'Change top menu items and add a "Home" item.' => 'ከፍተኛ የምናሌ ንጥሎችን ይቀይሩ እና "ቤት" ንጥል ያክሉ።',
   'Menu Manager' => 'ምናሌ አስተዳዳሪ',
 );

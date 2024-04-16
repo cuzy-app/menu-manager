@@ -1,5 +1,5 @@
 <?php
 return array (
-  'Change top menu items.' => 'Modifica le voci del menu principale.',
+  'Change top menu items and add a "Home" item.' => 'Modifica le voci del menu principale e aggiungi una voce "Home".',
   'Menu Manager' => 'Gestore del Menù',
 );

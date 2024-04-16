@@ -1,9 +1,9 @@
 <?php
 /**
  * Menu Manager
- * @link https://www.cuzy.app
- * @license https://www.cuzy.app/cuzy-license
- * @author [Marc FARRE](https://marc.fun)
+ * @link https://github.com/cuzy-app/menu-manager
+ * @license https://github.com/cuzy-app/menu-manager/blob/master/docs/LICENCE.md
+ * @author [Marc FARRE](https://marc.fun) for [CUZY.APP](https://www.cuzy.app)
  */
 
 namespace humhub\modules\menuManager\models;

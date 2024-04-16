@@ -1,5 +1,5 @@
 <?php
 return array (
-  'Change top menu items.' => 'Badilisha vitu vya menyu ya juu.',
+  'Change top menu items and add a "Home" item.' => 'Badilisha vitu vya menyu ya juu na uongeze kipengee cha "Nyumbani".',
   'Menu Manager' => 'Meneja wa Menyu',
 );

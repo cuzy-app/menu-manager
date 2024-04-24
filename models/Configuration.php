@@ -82,16 +82,23 @@ class Configuration extends Model
             $entry = ($attribute === 'topMenuCalendar') ? // TODO: add an ID to the calendar module top menu entry
                 $topMenu->getEntryByUrl(\humhub\modules\calendar\helpers\Url::toGlobalCalendar()) :
                 $topMenu->getEntryById($menuEntryConfig->id);
+
             if ($entry) {
                 $attributeLabel = $entry->getLabel();
-                $moduleId = static::ATTRIBUTE_MODULE_IDS[$attribute] ?? null;
-                if ($moduleId) {
-                    /** @var Module $module */
-                    $module = Yii::$app->getModule($moduleId);
-                    $attributeLabel .= ' (' . Yii::t('MenuManagerModule.config', '{ClassifiedSpace} module', ['ClassifiedSpace' => $module->getName()]) . ')';
-                }
-                $attributeLabels[$attribute] = $attributeLabel;
+            } elseif ($attribute === 'topMenuHome') {
+                // In case the home entry is disabled in the config
+                $attributeLabel = Yii::t('yii', 'Home');
+            } else {
+                continue;
             }
+
+            $moduleId = static::ATTRIBUTE_MODULE_IDS[$attribute] ?? null;
+            if ($moduleId) {
+                /** @var Module $module */
+                $module = Yii::$app->getModule($moduleId);
+                $attributeLabel .= ' (' . Yii::t('MenuManagerModule.config', '{ClassifiedSpace} module', ['ClassifiedSpace' => $module->getName()]) . ')';
+            }
+            $attributeLabels[$attribute] = $attributeLabel;
         }
         return $attributeLabels;
     }

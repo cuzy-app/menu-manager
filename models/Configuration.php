@@ -125,6 +125,10 @@ class Configuration extends Model
     {
         foreach ($this->availableTopMenuAttributes as $attribute) {
             $this->$attribute = (array)$this->settingsManager->getSerialized($attribute, $this->$attribute);
+            // Avoid icon with null value for the IconPicker widget
+            if (empty($this->$attribute['icon'])) {
+                $this->$attribute['icon'] = '';
+            }
         }
     }
 

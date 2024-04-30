@@ -6,7 +6,11 @@
  * @author [Marc FARRE](https://marc.fun) for [CUZY.APP](https://www.cuzy.app)
  */
 
-use humhub\modules\menuManager\models\Configuration;use humhub\modules\menuManager\models\MenuEntryConfig;use humhub\modules\ui\form\widgets\ActiveForm;use humhub\modules\ui\form\widgets\IconPicker;use humhub\modules\ui\view\components\View;
+use humhub\modules\menuManager\models\Configuration;
+use humhub\modules\menuManager\models\MenuEntryConfig;
+use humhub\modules\ui\form\widgets\ActiveForm;
+use humhub\modules\ui\form\widgets\IconPicker;
+use humhub\modules\ui\view\components\View;
 
 
 /**

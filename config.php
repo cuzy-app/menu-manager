@@ -6,8 +6,6 @@
  * @author [Marc FARRE](https://marc.fun) for [CUZY.APP](https://www.cuzy.app)
  */
 
-/** @noinspection MissedFieldInspection */
-
 use humhub\modules\menuManager\Events;
 use humhub\widgets\TopMenu;
 

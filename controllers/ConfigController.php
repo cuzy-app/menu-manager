@@ -20,7 +20,7 @@ class ConfigController extends Controller
         $module = $this->module;
         $model = $module->getConfiguration();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
             $this->view->saved();
         }
 

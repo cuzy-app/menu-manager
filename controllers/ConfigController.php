@@ -25,7 +25,7 @@ class ConfigController extends Controller
         }
 
         return $this->render('index', [
-            'model' => $model
+            'model' => $model,
         ]);
     }
 

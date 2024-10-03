@@ -107,7 +107,7 @@ class Configuration extends Model
     {
         return new MenuEntryConfig(array_merge(
             ['id' => static::ATTRIBUTE_MENU_LINK_ID[$attribute]],
-            $this->$attribute ?? []
+            $this->$attribute ?? [],
         ));
     }
 

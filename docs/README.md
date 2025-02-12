@@ -14,6 +14,7 @@ Top menu items that can be managed:
 - Events Map
 - eCommerce Store
 - Surveys
+- Jitsi Meet
 
 A "Home" item can be added to the menu.
 The homepage can be managed with [the Homepage module](https://marketplace.humhub.com/module/homepage), or by editing the configuration file `protected/config/web.php`, e.g.:

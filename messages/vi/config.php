@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Chỉ quản trị viên',
   'All' => 'Tất cả',
   'Default if empty.' => 'Mặc định nếu trống.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Thứ tự sắp xếp',
   'To be displayed, it must also be enabled in the configuration' => 'Để được hiển thị, nó cũng phải được kích hoạt trong cấu hình',
   'Values between 1 and 10000.' => 'Giá trị từ 1 đến 10000.',
-  'Who should these items be displayed for?' => 'Những mục này nên được hiển thị cho ai?',
+  'Visibility' => 'Khả năng hiển thị',
   '{ClassifiedSpace} module' => 'Mô-đun {ClassifiedSpace}',
-);
+];

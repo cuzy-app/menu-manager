@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Samo za administratore',
   'All' => 'svi',
   'Default if empty.' => 'Zadano ako je prazno.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Redoslijed sortiranja',
   'To be displayed, it must also be enabled in the configuration' => 'Da bi se prikazao, također mora biti omogućen u konfiguraciji',
   'Values between 1 and 10000.' => 'Vrijednosti između 1 i 10000.',
-  'Who should these items be displayed for?' => 'Za koga bi te stavke trebale biti izložene?',
+  'Visibility' => 'Vidljivost',
   '{ClassifiedSpace} module' => 'Modul {ClassifiedSpace}',
-);
+];

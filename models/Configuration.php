@@ -10,6 +10,7 @@ namespace humhub\modules\menuManager\models;
 
 use humhub\components\Module;
 use humhub\components\SettingsManager;
+use humhub\modules\ui\menu\MenuLink;
 use humhub\widgets\TopMenu;
 use Yii;
 use yii\base\Model;
@@ -29,11 +30,12 @@ class Configuration extends Model
         'topMenuPeople' => 'people',
         'topMenuSpaces' => 'spaces',
         'topMenuClassifiedSpaceBrowser' => 'classified-space-browser',
-        'topMenuCalendar' => 'calendar', // TODO: add an ID to the calendar module top menu entry
+        'topMenuCalendar' => 'calendar', // TODO: add an ID to the Calendar module top menu entry
         'topMenuMembersMap' => 'members-map',
         'topMenuEventsMap' => 'events-map',
         'topMenuEcommerce' => 'ecommerce',
         'topMenuSurvey' => 'surveys-global',
+        'topMenuJitsiMeet' => 'jitsi-meet', // TODO: add an ID to the Jitsi Meet module top menu entry
     ];
     /**
      * Attributes for menu entries from external modules
@@ -45,6 +47,7 @@ class Configuration extends Model
         'topMenuEventsMap' => 'events-map',
         'topMenuEcommerce' => 'ecommerce',
         'topMenuSurvey' => 'survey',
+        'topMenuJitsiMeet' => 'jitsi-meet',
     ];
 
     public SettingsManager $settingsManager;
@@ -59,6 +62,7 @@ class Configuration extends Model
     public array $topMenuEventsMap = [];
     public array $topMenuEcommerce = [];
     public array $topMenuSurvey = [];
+    public array $topMenuJitsiMeet = [];
 
     /**
      * @inheritdoc
@@ -79,9 +83,15 @@ class Configuration extends Model
         $topMenu = new TopMenu();
         foreach ($this->availableTopMenuAttributes as $attribute) {
             $menuEntryConfig = $this->getMenuEntryConfig($attribute);
-            $entry = ($attribute === 'topMenuCalendar') ? // TODO: add an ID to the calendar module top menu entry
-                $topMenu->getEntryByUrl(\humhub\modules\calendar\helpers\Url::toGlobalCalendar()) :
-                $topMenu->getEntryById($menuEntryConfig->id);
+
+            if ($attribute === 'topMenuCalendar') { // TODO: add an ID to the Calendar module top menu entry
+                $entry = $topMenu->getEntryByUrl(\humhub\modules\calendar\helpers\Url::toGlobalCalendar());
+            } elseif ($attribute === 'topMenuJitsiMeet') { // TODO: add an ID to the Jitsi Meet module top menu entry
+                $entry = $topMenu->getEntryByUrl(['/jitsi-meet/room']);
+            } else {
+                /** @var MenuLink $entry */
+                $entry = $topMenu->getEntryById($menuEntryConfig->id);
+            }
 
             if ($entry) {
                 $attributeLabel = $entry->getLabel();

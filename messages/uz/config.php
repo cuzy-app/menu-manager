@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Faqat administratorlar',
   'All' => 'Hammasi',
   'Default if empty.' => 'Boʻsh boʻlsa, birlamchi.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Saralash tartibi',
   'To be displayed, it must also be enabled in the configuration' => 'Ko\'rsatish uchun u konfiguratsiyada ham yoqilgan bo\'lishi kerak',
   'Values between 1 and 10000.' => '1 dan 10000 gacha qiymatlar.',
-  'Who should these items be displayed for?' => 'Ushbu elementlar kim uchun ko\'rsatilishi kerak?',
+  'Visibility' => 'Ko\'rinish',
   '{ClassifiedSpace} module' => '{ClassifiedSpace} moduli',
-);
+];

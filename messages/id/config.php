@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Hanya administrator',
   'All' => 'Semua',
   'Default if empty.' => 'Default jika kosong.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Urutkan pesanan',
   'To be displayed, it must also be enabled in the configuration' => 'Untuk ditampilkan, itu juga harus diaktifkan di konfigurasi',
   'Values between 1 and 10000.' => 'Nilai antara 1 dan 10.000.',
-  'Who should these items be displayed for?' => 'Untuk siapa barang-barang ini harus dipajang?',
+  'Visibility' => 'Visibilitas',
   '{ClassifiedSpace} module' => 'Modul {ClassifiedSpace}',
-);
+];

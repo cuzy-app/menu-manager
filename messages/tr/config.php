@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Yalnızca yöneticiler',
   'All' => 'Tüm',
   'Default if empty.' => 'Boşsa varsayılan.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Sıralama düzeni',
   'To be displayed, it must also be enabled in the configuration' => 'Görüntülenmesi için yapılandırmada da etkinleştirilmesi gerekir',
   'Values between 1 and 10000.' => '1 ile 10000 arasındaki değerler.',
-  'Who should these items be displayed for?' => 'Bu öğeler kimin için sergilenmeli?',
+  'Visibility' => 'Görünürlük',
   '{ClassifiedSpace} module' => '{ClassifiedSpace} modülü',
-);
+];

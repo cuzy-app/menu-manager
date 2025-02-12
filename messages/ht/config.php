@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Administratè sèlman',
   'All' => 'Tout',
   'Default if empty.' => 'Default si vid.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Triye lòd',
   'To be displayed, it must also be enabled in the configuration' => 'Pou ka parèt, li dwe tou aktive nan konfigirasyon an',
   'Values between 1 and 10000.' => 'Valè ant 1 ak 10000.',
-  'Who should these items be displayed for?' => 'Pou ki moun ki ta dwe montre atik sa yo?',
+  'Visibility' => 'Vizibilite',
   '{ClassifiedSpace} module' => 'Modil {ClassifiedSpace}',
-);
+];

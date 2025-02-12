@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Tikai administratori',
   'All' => 'Visi',
   'Default if empty.' => 'Noklusējums, ja tukšs.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Šķirošanas secība',
   'To be displayed, it must also be enabled in the configuration' => 'Lai tas tiktu parādīts, tas ir jāiespējo arī konfigurācijā',
   'Values between 1 and 10000.' => 'Vērtības no 1 līdz 10 000.',
-  'Who should these items be displayed for?' => 'Kam šie priekšmeti būtu jārāda?',
+  'Visibility' => 'Redzamība',
   '{ClassifiedSpace} module' => '{ClassifiedSpace} modulis',
-);
+];

@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Само администратори',
   'All' => 'Све',
   'Default if empty.' => 'Подразумевано ако је празно.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Редослед сортирања',
   'To be displayed, it must also be enabled in the configuration' => 'Да би био приказан, такође мора бити омогућен у конфигурацији',
   'Values between 1 and 10000.' => 'Вредности између 1 и 10000.',
-  'Who should these items be displayed for?' => 'Коме би ове ставке требало да буду приказане?',
+  'Visibility' => 'Видљивост',
   '{ClassifiedSpace} module' => '{ClassifiedSpace} модул',
-);
+];

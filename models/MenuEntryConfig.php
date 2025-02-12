@@ -55,7 +55,7 @@ class MenuEntryConfig extends Model
     public function attributeLabels()
     {
         return [
-            'displayState' => Yii::t('MenuManagerModule.config', 'Who should these items be displayed for?'),
+            'displayState' => Yii::t('MenuManagerModule.config', 'Visibility'),
             'icon' => Yii::t('MenuManagerModule.config', 'Icon'),
             'label' => Yii::t('MenuManagerModule.config', 'Name'),
             'sortOrder' => Yii::t('MenuManagerModule.config', 'Sort order'),

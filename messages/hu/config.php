@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Csak rendszergazdák',
   'All' => 'Minden',
   'Default if empty.' => 'Alapértelmezett, ha üres.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Sorrend',
   'To be displayed, it must also be enabled in the configuration' => 'A megjelenítéshez a konfigurációban is engedélyezni kell',
   'Values between 1 and 10000.' => '1 és 10 000 közötti értékek.',
-  'Who should these items be displayed for?' => 'Kinek kell ezeket az elemeket megjeleníteni?',
+  'Visibility' => 'Láthatóság',
   '{ClassifiedSpace} module' => '{ClassifiedSpace} modul',
-);
+];

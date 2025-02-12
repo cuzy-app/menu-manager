@@ -12,6 +12,6 @@ return [
     'Sort order' => '',
     'To be displayed, it must also be enabled in the configuration' => '',
     'Values between 1 and 10000.' => '',
-    'Who should these items be displayed for?' => '',
+    'Visibility' => '',
     '{ClassifiedSpace} module' => '',
 ];

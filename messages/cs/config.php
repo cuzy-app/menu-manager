@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Pouze správci',
   'All' => 'Všechno',
   'Default if empty.' => 'Výchozí, pokud je prázdné.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Řadit pořadí',
   'To be displayed, it must also be enabled in the configuration' => 'Aby se zobrazil, musí být také povolen v konfiguraci',
   'Values between 1 and 10000.' => 'Hodnoty mezi 1 a 10 000.',
-  'Who should these items be displayed for?' => 'Komu by se měly tyto položky zobrazovat?',
+  'Visibility' => 'Viditelnost',
   '{ClassifiedSpace} module' => 'Modul {ClassifiedSpace}',
-);
+];

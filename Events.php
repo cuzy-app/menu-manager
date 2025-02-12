@@ -67,10 +67,15 @@ class Events
             }
 
             $menuEntryConfig = $configuration->getMenuEntryConfig($attribute);
-            /** @var MenuLink $entry */
-            $entry = ($attribute === 'topMenuCalendar') ? // TODO: add an ID to the calendar module top menu entry
-                $menu->getEntryByUrl(\humhub\modules\calendar\helpers\Url::toGlobalCalendar()) :
-                $menu->getEntryById($menuEntryConfig->id);
+
+            if ($attribute === 'topMenuCalendar') { // TODO: add an ID to the Calendar module top menu entry
+                $entry = $menu->getEntryByUrl(\humhub\modules\calendar\helpers\Url::toGlobalCalendar());
+            } elseif ($attribute === 'topMenuJitsiMeet') { // TODO: add an ID to the Jitsi Meet module top menu entry
+                $entry = $menu->getEntryByUrl(['/jitsi-meet/room']);
+            } else {
+                /** @var MenuLink $entry */
+                $entry = $menu->getEntryById($menuEntryConfig->id);
+            }
             if (!$entry) {
                 continue;
             }

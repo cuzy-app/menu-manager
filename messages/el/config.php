@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Μόνο διαχειριστές',
   'All' => 'Ολα',
   'Default if empty.' => 'Προεπιλογή εάν είναι κενό.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Σειρά ταξινόμησης',
   'To be displayed, it must also be enabled in the configuration' => 'Για να εμφανιστεί, πρέπει επίσης να είναι ενεργοποιημένο στη διαμόρφωση',
   'Values between 1 and 10000.' => 'Τιμές μεταξύ 1 και 10000.',
-  'Who should these items be displayed for?' => 'Σε ποιον πρέπει να εμφανίζονται αυτά τα στοιχεία;',
+  'Visibility' => 'Ορατότητα',
   '{ClassifiedSpace} module' => 'Ενότητα {ClassifiedSpace}',
-);
+];

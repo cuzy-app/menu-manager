@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Solo amministratori',
   'All' => 'Tutto',
   'Default if empty.' => 'Predefinito se vuoto.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Ordinamento',
   'To be displayed, it must also be enabled in the configuration' => 'Per essere visualizzato deve essere anche abilitato nella configurazione',
   'Values between 1 and 10000.' => 'Valori compresi tra 1 e 10000.',
-  'Who should these items be displayed for?' => 'Per chi dovrebbero essere visualizzati questi articoli?',
+  'Visibility' => 'Visibilità',
   '{ClassifiedSpace} module' => 'Modulo {ClassifiedSpace}',
-);
+];

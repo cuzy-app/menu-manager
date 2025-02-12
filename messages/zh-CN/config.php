@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => '仅限管理员',
   'All' => '全部',
   'Default if empty.' => '如果为空则为默认。',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => '排序',
   'To be displayed, it must also be enabled in the configuration' => '要显示，还必须在配置中启用它',
   'Values between 1 and 10000.' => '值介于 1 到 10000 之间。',
-  'Who should these items be displayed for?' => '这些物品应该向谁展示？',
+  'Visibility' => '能见度',
   '{ClassifiedSpace} module' => '{ClassifiedSpace}模块',
-);
+];

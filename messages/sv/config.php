@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Endast administratörer',
   'All' => 'Allt',
   'Default if empty.' => 'Standard om tom.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Sorteringsordning',
   'To be displayed, it must also be enabled in the configuration' => 'För att visas måste den också vara aktiverad i konfigurationen',
   'Values between 1 and 10000.' => 'Värden mellan 1 och 10 000.',
-  'Who should these items be displayed for?' => 'För vem ska dessa föremål visas?',
+  'Visibility' => 'Synlighet',
   '{ClassifiedSpace} module' => '{ClassifiedSpace} -modul',
-);
+];

@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'አስተዳዳሪዎች ብቻ',
   'All' => 'ሁሉም',
   'Default if empty.' => 'ባዶ ከሆነ ነባሪ።',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'ቅደም ተከተል ደርድር',
   'To be displayed, it must also be enabled in the configuration' => 'ለመታየት ውቅር ውስጥ መንቃት አለበት።',
   'Values between 1 and 10000.' => 'በ1 እና በ10000 መካከል ያሉ እሴቶች።',
-  'Who should these items be displayed for?' => 'እነዚህ እቃዎች ለማን መታየት አለባቸው?',
+  'Visibility' => 'ታይነት',
   '{ClassifiedSpace} module' => '{ClassifiedSpace} ሞጁል',
-);
+];

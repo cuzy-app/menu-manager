@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => '管理者のみ',
   'All' => '全て',
   'Default if empty.' => '空の場合はデフォルト。',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => '並び替え順',
   'To be displayed, it must also be enabled in the configuration' => '表示するには、設定でも有効にする必要があります',
   'Values between 1 and 10000.' => '1 ～ 10000 までの値。',
-  'Who should these items be displayed for?' => 'これらのアイテムは誰に向けて表示されるべきですか?',
+  'Visibility' => '可視性',
   '{ClassifiedSpace} module' => '{ClassifiedSpace}モジュール',
-);
+];

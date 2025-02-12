@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'المسؤولين فقط',
   'All' => 'الجميع',
   'Default if empty.' => 'الافتراضي إذا كان فارغا.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'امر ترتيب',
   'To be displayed, it must also be enabled in the configuration' => 'ليتم عرضه، يجب أيضًا تمكينه في التكوين',
   'Values between 1 and 10000.' => 'القيم بين 1 و10000.',
-  'Who should these items be displayed for?' => 'لمن يجب عرض هذه العناصر؟',
+  'Visibility' => 'الرؤية',
   '{ClassifiedSpace} module' => 'وحدة {ClassifiedSpace}',
-);
+];

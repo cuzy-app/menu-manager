@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Vain ylläpitäjät',
   'All' => 'Kaikki',
   'Default if empty.' => 'Oletusarvo, jos se on tyhjä.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Lajittelujärjestys',
   'To be displayed, it must also be enabled in the configuration' => 'Jotta se voidaan näyttää, se on myös otettava käyttöön asetuksissa',
   'Values between 1 and 10000.' => 'Arvot välillä 1 - 10 000.',
-  'Who should these items be displayed for?' => 'Kenelle nämä kohteet pitäisi näyttää?',
+  'Visibility' => 'Näkyvyys',
   '{ClassifiedSpace} module' => '{ClassifiedSpace} moduuli',
-);
+];

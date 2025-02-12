@@ -1,5 +1,5 @@
 <?php
-return array (
+return [
   'Administrators only' => 'Administratzaileak soilik',
   'All' => 'Denak',
   'Default if empty.' => 'Lehenetsia hutsik badago.',
@@ -11,6 +11,6 @@ return array (
   'Sort order' => 'Ordenatzeko ordena',
   'To be displayed, it must also be enabled in the configuration' => 'Bistaratzeko, konfigurazioan ere gaituta egon behar da',
   'Values between 1 and 10000.' => '1 eta 10000 arteko balioak.',
-  'Who should these items be displayed for?' => 'Norentzat erakutsi behar dira elementu hauek?',
+  'Visibility' => 'Ikusgarritasuna',
   '{ClassifiedSpace} module' => '{ClassifiedSpace} modulua',
-);
+];

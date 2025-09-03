@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Menu Manager
  * @link https://github.com/cuzy-app/menu-manager

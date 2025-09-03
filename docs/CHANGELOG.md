@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.1.0 (September 3, 2025)
+--------------------
+- Enh: Migration to Bootstrap 5 for HumHub 1.18
+- Enh: Use new `ControllerHelper::isActivePath` & `$module?->isEnabled`
+
 1.0.1 (February 12, 2025)
 --------------------
 - Enh: Add Jitsi Meet module

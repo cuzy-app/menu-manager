@@ -135,11 +135,6 @@ class Configuration extends Model
     {
         foreach ($this->availableTopMenuAttributes as $attribute) {
             $this->$attribute = (array)$this->settingsManager->getSerialized($attribute, $this->$attribute);
-            // Avoid icon with null value for the IconPicker widget
-            // TODO: remove when https://github.com/humhub/humhub/pull/6972 is merged with HumHub minimal version of this module
-            if (empty($this->$attribute['icon'])) {
-                $this->$attribute['icon'] = '';
-            }
         }
     }
 

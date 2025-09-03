@@ -9,6 +9,7 @@
 namespace humhub\modules\menuManager;
 
 use Exception;
+use humhub\helpers\ControllerHelper;
 use humhub\modules\ui\menu\MenuLink;
 use humhub\widgets\TopMenu;
 use Yii;
@@ -40,7 +41,7 @@ class Events
                 'url' => Url::home(),
                 'icon' => $homeMenuEntryConfig->icon ?: 'home',
                 'sortOrder' => $homeMenuEntryConfig->sortOrder ?: 50,
-                'isActive' => Url::home() === Url::current() || MenuLink::isActiveState('homepage', 'index', 'index'),
+                'isActive' => Url::home() === Url::current() || ControllerHelper::isActivePath('homepage', 'index', 'index'),
                 'isVisible' => true,
             ]));
         }

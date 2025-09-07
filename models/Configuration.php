@@ -30,6 +30,7 @@ class Configuration extends Model
         'topMenuDashboard' => 'dashboard',
         'topMenuPeople' => 'people',
         'topMenuSpaces' => 'spaces',
+        'topMenuSpaceChooser' => 'space-chooser',
         'topMenuClassifiedSpaceBrowser' => 'classified-space-browser',
         'topMenuCalendar' => 'calendar', // TODO: add an ID to the Calendar module top menu entry
         'topMenuMembersMap' => 'members-map',
@@ -57,6 +58,7 @@ class Configuration extends Model
     public array $topMenuDashboard = [];
     public array $topMenuPeople = [];
     public array $topMenuSpaces = [];
+    public array $topMenuSpaceChooser = [];
     public array $topMenuClassifiedSpaceBrowser = [];
     public array $topMenuCalendar = [];
     public array $topMenuMembersMap = [];
@@ -96,6 +98,9 @@ class Configuration extends Model
 
             if ($entry) {
                 $attributeLabel = $entry->getLabel();
+            } elseif ($attribute === 'topMenuSpaceChooser') {
+                // Not in the TopMenu entries, because it's a separated widget
+                $attributeLabel = Yii::t('SpaceModule.chooser', 'My spaces');
             } elseif ($attribute === 'topMenuHome') {
                 // In case the home entry is disabled in the config
                 $attributeLabel = Yii::t('yii', 'Home');
@@ -162,10 +167,17 @@ class Configuration extends Model
 
     public function getAvailableTopMenuAttributes(): array
     {
+        /** @var \humhub\modules\classifiedSpace\Module $csModule */
+        $csModule = Yii::$app->getModule('classified-space');
+        $isRemovedSpaceChooser = (bool)$csModule?->configuration?->removeDefaultSpaceBrowser;
+
         $availableTopMenuAttributes = [];
         foreach (self::ATTRIBUTE_MENU_LINK_ID as $attribute => $menuLinkId) {
             $moduleId = static::ATTRIBUTE_MODULE_IDS[$attribute] ?? null;
-            if (!$moduleId || Yii::$app->getModule($moduleId)) {
+            if (
+                (!$moduleId || Yii::$app->getModule($moduleId)?->isEnabled)
+                && ($attribute !== 'topMenuSpaceChooser' || !$isRemovedSpaceChooser) // If the Classified Space module is installed and configured to remove the default space browser, don't show this option
+            ) {
                 $availableTopMenuAttributes[] = $attribute;
             }
         }

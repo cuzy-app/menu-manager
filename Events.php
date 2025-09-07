@@ -11,10 +11,12 @@ namespace humhub\modules\menuManager;
 
 use Exception;
 use humhub\helpers\ControllerHelper;
+use humhub\modules\classifiedSpace\Module;
 use humhub\modules\ui\menu\MenuLink;
 use humhub\widgets\TopMenu;
 use Yii;
 use yii\base\Event;
+use yii\base\WidgetEvent;
 use yii\helpers\Url;
 
 class Events
@@ -64,8 +66,11 @@ class Events
         $configuration = $module->getConfiguration();
 
         foreach ($configuration->availableTopMenuAttributes as $attribute) {
-            if ($attribute === 'topMenuHome') {
-                continue; // See onTopMenuInit()
+            if (
+                $attribute === 'topMenuHome' // See onTopMenuInit()
+                || $attribute === 'topMenuSpaceChooser' // See onSpaceChooserBeforeRun(
+            ) {
+                continue;
             }
 
             $menuEntryConfig = $configuration->getMenuEntryConfig($attribute);
@@ -99,6 +104,20 @@ class Events
                     $entry->setSortOrder($menuEntryConfig->sortOrder);
                 }
             }
+        }
+    }
+
+
+
+    public static function onSpaceChooserBeforeRun(WidgetEvent $event)
+    {
+        /** @var Module $module */
+        $module = Yii::$app->getModule('menu-manager');
+        $configuration = $module->getConfiguration();
+
+        $mySpaceMenuEntryConfig = $configuration->getMenuEntryConfig('topMenuSpaceChooser');
+        if (!$mySpaceMenuEntryConfig->display()) {
+            $event->isValid = false;
         }
     }
 }

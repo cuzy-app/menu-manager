@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.1.1 (September 7, 2025)
+--------------------
+- Enh: Add "My Spaces" widget
+
 1.1.0 (September 3, 2025)
 --------------------
 - Enh: Migration to Bootstrap 5 for HumHub 1.18

@@ -9,8 +9,8 @@
 use humhub\components\View;
 use humhub\modules\menuManager\models\Configuration;
 use humhub\modules\menuManager\models\MenuEntryConfig;
-use humhub\widgets\form\ActiveForm;
 use humhub\modules\ui\form\widgets\IconPicker;
+use humhub\widgets\form\ActiveForm;
 
 
 /**
@@ -50,10 +50,12 @@ $MenuEntryConfigAttributeHints = (new MenuEntryConfig())->attributeHints();
                     ->hint($MenuEntryConfigAttributeHints['label'] ?? '') ?>
             </div>
             <div class="col-lg-3">
-                <?= $form->field($model, $attribute . '[sortOrder]')
-                    ->textInput(['type' => 'number', 'step' => 1, 'min' => 1, 'max' => 10000])
-                    ->label($MenuEntryConfigAttributeLabels['sortOrder'] ?? '')
-                    ->hint($MenuEntryConfigAttributeHints['sortOrder'] ?? '') ?>
+                <?php if ($attribute !== 'topMenuSpaceChooser'): ?>
+                    <?= $form->field($model, $attribute . '[sortOrder]')
+                        ->textInput(['type' => 'number', 'step' => 1, 'min' => 1, 'max' => 10000])
+                        ->label($MenuEntryConfigAttributeLabels['sortOrder'] ?? '')
+                        ->hint($MenuEntryConfigAttributeHints['sortOrder'] ?? '') ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>

@@ -11,7 +11,9 @@ namespace humhub\modules\menuManager;
 
 use Exception;
 use humhub\helpers\ControllerHelper;
+use humhub\libs\WidgetCreateEvent;
 use humhub\modules\classifiedSpace\Module;
+use humhub\modules\menuManager\widgets\SpaceChooser;
 use humhub\modules\ui\menu\MenuLink;
 use humhub\widgets\TopMenu;
 use Yii;
@@ -119,5 +121,10 @@ class Events
         if (!$mySpaceMenuEntryConfig->display()) {
             $event->isValid = false;
         }
+    }
+
+    public static function onSpaceChooserCreate(WidgetCreateEvent $event)
+    {
+        $event->config['class'] = SpaceChooser::class;
     }
 }

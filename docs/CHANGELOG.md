@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.1.2 (November 7, 2025)
+--------------------
+- Fix: "My Spaces" widget for Icon and Name, and remove the Sort Order field (as it's a separated widget, it's not part of the menu)
+
 1.1.1 (September 7, 2025)
 --------------------
 - Enh: Add "My Spaces" widget

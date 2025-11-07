@@ -20,11 +20,6 @@ class Module extends \humhub\components\Module
      */
     public $icon = 'circle-o';
 
-    /**
-     * @var string defines path for resources, including the screenshots path for the marketplace
-     */
-    public $resourcesPath = 'resources';
-
     private ?Configuration $_configuration = null;
 
     public function getConfiguration(): Configuration

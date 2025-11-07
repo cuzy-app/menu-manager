@@ -31,5 +31,10 @@ return [
             'event' => Chooser::EVENT_BEFORE_RUN,
             'callback' => [Events::class, 'onSpaceChooserBeforeRun'],
         ],
+        [
+            'class' => Chooser::class,
+            'event' => Chooser::EVENT_CREATE,
+            'callback' => [Events::class, 'onSpaceChooserCreate'],
+        ],
     ],
 ];

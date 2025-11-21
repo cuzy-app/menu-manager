@@ -95,7 +95,7 @@ class Events
                 if ($menuEntryConfig->icon) {
                     try {
                         $entry->setIcon($menuEntryConfig->icon);
-                    } catch (Exception $e) {
+                    } catch (Exception) {
                     }
                 }
                 if ($menuEntryConfig->label) {

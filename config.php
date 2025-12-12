@@ -19,22 +19,22 @@ return [
         [
             'class' => TopMenu::class,
             'event' => TopMenu::EVENT_INIT, // To add entries (otherwise, entries are not marked as active)
-            'callback' => [Events::class, 'onTopMenuInit'],
+            'callback' => Events::onTopMenuInit(...),
         ],
         [
             'class' => TopMenu::class,
             'event' => TopMenu::EVENT_BEFORE_RUN, // To remove entries (otherwise, entries from other modules might not be removed)
-            'callback' => [Events::class, 'onTopMenuBeforeRun'],
+            'callback' => Events::onTopMenuBeforeRun(...),
         ],
         [
             'class' => Chooser::class,
             'event' => Chooser::EVENT_BEFORE_RUN,
-            'callback' => [Events::class, 'onSpaceChooserBeforeRun'],
+            'callback' => Events::onSpaceChooserBeforeRun(...),
         ],
         [
             'class' => Chooser::class,
             'event' => Chooser::EVENT_CREATE,
-            'callback' => [Events::class, 'onSpaceChooserCreate'],
+            'callback' => Events::onSpaceChooserCreate(...),
         ],
     ],
 ];

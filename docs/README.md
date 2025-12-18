@@ -46,4 +46,4 @@ https://github.com/cuzy-app/menu-manager
 
 ## Licence
 
-[GNU AGPL](https://github.com/cuzy-app/clean-theme/blob/master/docs/LICENCE.md)
+[GNU AGPL](https://github.com/cuzy-app/menu-manager/blob/master/docs/LICENCE.md)

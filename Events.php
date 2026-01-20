@@ -13,6 +13,7 @@ use Exception;
 use humhub\helpers\ControllerHelper;
 use humhub\libs\WidgetCreateEvent;
 use humhub\modules\classifiedSpace\Module;
+use humhub\modules\enterpriseTheme\widgets\Chooser;
 use humhub\modules\menuManager\widgets\SpaceChooser;
 use humhub\modules\ui\menu\MenuLink;
 use humhub\widgets\TopMenu;
@@ -109,8 +110,6 @@ class Events
         }
     }
 
-
-
     public static function onSpaceChooserBeforeRun(WidgetEvent $event)
     {
         /** @var Module $module */
@@ -125,6 +124,12 @@ class Events
 
     public static function onSpaceChooserCreate(WidgetCreateEvent $event)
     {
+        // No change to Enterprise Theme Space Chooser
+        if ($event->config['class'] === Chooser::class) {
+            return;
+        }
+
+        // Use Menu Manager Space Chooser to change the name and the icon
         $event->config['class'] = SpaceChooser::class;
     }
 }

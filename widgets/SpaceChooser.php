@@ -15,6 +15,9 @@ use humhub\modules\space\widgets\Chooser;
 use humhub\modules\ui\icon\widgets\Icon;
 use Yii;
 
+/**
+ * Change the name and the icon
+ */
 class SpaceChooser extends Chooser
 {
     protected function getNoSpaceHtml()

@@ -3,7 +3,7 @@
 /**
  * Menu Manager
  * @link https://github.com/cuzy-app/menu-manager
- * @license https://github.com/cuzy-app/menu-manager/blob/master/docs/LICENCE.md
+ * @license https://github.com/cuzy-app/menu-manager/blob/main/docs/LICENCE.md
  * @author [Marc FARRE](https://marc.fun) for [CUZY.APP](https://www.cuzy.app)
  */
 

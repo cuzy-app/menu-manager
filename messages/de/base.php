@@ -1,5 +1,5 @@
 <?php
 return [
-  'Change top menu items and add a "Home" item.' => 'Ändern Sie die oberen Menüelemente und fügen Sie ein „Home“-Element hinzu.',
+  'Change top menu items and add a "Home" item.' => 'Ändere die oberen Menüelemente und füge ein „Home“-Element hinzu.',
   'Menu Manager' => 'Menü-Manager',
 ];

@@ -4,7 +4,7 @@
  * Menu Manager
  * @link https://github.com/cuzy-app/menu-manager
  * @license https://github.com/cuzy-app/menu-manager/blob/master/docs/LICENCE.md
- * @author [Marc FARRE](https://marc.fun) for [CUZY.APP](https://www.cuzy.app)
+ * @author [Marc FARRE](https://marc.fun) for [CUZY.app](https://www.cuzy.app)
  */
 
 namespace humhub\modules\menuManager\widgets;

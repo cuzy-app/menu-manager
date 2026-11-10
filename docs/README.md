@@ -42,7 +42,7 @@ https://github.com/cuzy-app/menu-manager
 
 ## Publisher
 
-[CUZY.APP](https://www.cuzy.app/)
+[CUZY.app](https://www.cuzy.app)
 
 ## Licence
 
